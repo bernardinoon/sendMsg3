@@ -1,5 +1,6 @@
 //Este arquivo é para função de enviar mensagem a partir do index.html ouvindo na porta
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const path = require('path');
 const port = 3001;
@@ -9,14 +10,9 @@ const port = 3001;
 app.use(express.urlencoded({ extended: false }));
 
 
-// Configuração dos cabeçalhos CORS PARA O VERCEL!!!
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'send-msg3-246njdpab-bernardinoon.vercel.app'); // Altere o domínio para o correto
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  next();
-});
-
+app.use(cors({
+  origin: 'https://send-msg3.vercel.app'
+}));
 
 // Rota para receber o formulário
 app.post('/enviar', (req, res) => {
