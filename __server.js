@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // Configuração dos cabeçalhos CORS PARA O VERCEL!!!
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'https://send-msg3.vercel.app'); // Altere o domínio para o correto
+  res.setHeader('Access-Control-Allow-Origin', 'send-msg3-246njdpab-bernardinoon.vercel.app'); // Altere o domínio para o correto
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   next();
