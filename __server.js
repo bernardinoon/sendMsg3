@@ -2,11 +2,21 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const port = 3003;
+const port = 3001;
 
 
 // Configura o servidor para lidar com requisições POST
 app.use(express.urlencoded({ extended: false }));
+
+
+// Configuração dos cabeçalhos CORS PARA O VERCEL!!!
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://send-msg3.vercel.app'); // Altere o domínio para o correto
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
+
 
 // Rota para receber o formulário
 app.post('/enviar', (req, res) => {
